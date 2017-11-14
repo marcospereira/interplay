@@ -5,6 +5,7 @@ group: beta
 script: sbt validate
 jdk:
 - oraclejdk8
+- oraclejdk9
 cache:
   directories:
   - "$HOME/.ivy2/cache"
