@@ -32,3 +32,4 @@ def common: Seq[Setting[_]] = Seq(
   bintrayCredentialsFile := (baseDirectory in ThisBuild).value / "bintray.credentials"
 )
 
+publishTo in ThisBuild := Some(Opts.resolver.sonatypeSnapshots)

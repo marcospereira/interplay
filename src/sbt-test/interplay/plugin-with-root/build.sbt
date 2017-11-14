@@ -1,3 +1,5 @@
+lazy val ScalaVersion = sys.props.get("scala.version").getOrElse("2.12.4")
+
 // What an actual project would look like
 lazy val `mock-root` = (project in file("."))
   .enablePlugins(PlayRootProject)
@@ -17,6 +19,7 @@ playBuildExtraTests := {
 }
 
 playBuildRepoName in ThisBuild := "mock"
+publishTo in ThisBuild := Some(Opts.resolver.sonatypeSnapshots)
 
 // Below this line is for facilitating tests
 InputKey[Unit]("contains") := {
@@ -34,6 +37,7 @@ def common: Seq[Setting[_]] = Seq(
   },
   publish := { throw sys.error("Publish should not have been invoked") },
   bintrayRelease := IO.write(target.value / "bintray-release-version", version.value),
-  bintrayCredentialsFile := (baseDirectory in ThisBuild).value / "bintray.credentials"
+  bintrayCredentialsFile := (baseDirectory in ThisBuild).value / "bintray.credentials",
+  scalaVersion := ScalaVersion,
+  crossScalaVersions := Seq(ScalaVersion)
 )
-

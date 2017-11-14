@@ -9,6 +9,7 @@ lazy val `mock-library` = (project in file("mock-library"))
   .settings(common: _*)
 
 playBuildRepoName in ThisBuild := "mock"
+publishTo in ThisBuild := Some(Opts.resolver.sonatypeSnapshots)
 
 // Below this line is for facilitating tests
 InputKey[Unit]("contains") := {
